@@ -5,6 +5,7 @@ import About from '@/components/about'
 import Contact from '@/components/contact'
 import Login from '@/customer/login'
 import CustomerData from '@/customer/customer-data'
+import CustomersList from '@/customer/customers-list'
 import ShoppingCart from '@/shopping-cart/shopping-cart'
 import CartView from '@/shopping-cart/cart-view'
 import CartAddedList from '@/shopping-cart/cart-added-list'
@@ -38,6 +39,11 @@ export default new Router({
       path: '/customer-data',
       name: 'CustomerData',
       component: CustomerData
+    },
+    {
+      path: '/customers-list',
+      name: 'CustomerList',
+      component: CustomersList
     },
     {
       path: '/shopping-cart',

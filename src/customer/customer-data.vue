@@ -44,6 +44,7 @@
             </b-form-group>
             <b-button type="submit" variant="primary">Submit</b-button>
             <b-button type="reset" variant="danger">Reset</b-button>
+            <b-button @click="cancelSubmit" variant="danger">Cancel</b-button>
         </b-form>
         <b-card class="my-3" header="Form Data result">
             <pre>{{ form }}</pre>
@@ -80,7 +81,8 @@ export default {
         onSubmit(event){
             event.preventDefault();
             console.log(JSON.stringify(this.form));
-            this.$store.commit('customerData', this.form)
+            this.$store.commit('customerData', this.form);
+            this.$router.push('/customers-list');
         },
         onReset(event){
             event.preventDefault();
@@ -88,6 +90,9 @@ export default {
             this.form.name = '';
             this.form.food = null;
             this.form.checked = [];
+        },
+        cancelSubmit(){
+            this.$router.push('/customers-list');
         }
     },
     computed: {
