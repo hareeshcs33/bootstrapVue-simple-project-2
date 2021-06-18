@@ -1,5 +1,9 @@
+import { shoppingCartData } from '../data/shopping-cart-data'
+
 export default {
-    products: [],
     username: 'hareesh sapparad',
-    customers: []
+    products: [],
+    customers: [],
+    shoppingCartData: shoppingCartData,
+    idVal: null,
 }

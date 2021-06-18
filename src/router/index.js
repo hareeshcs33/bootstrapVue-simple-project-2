@@ -5,6 +5,9 @@ import About from '@/components/about'
 import Contact from '@/components/contact'
 import Login from '@/customer/login'
 import CustomerData from '@/customer/customer-data'
+import ShoppingCart from '@/shopping-cart/shopping-cart'
+import CartView from '@/shopping-cart/cart-view'
+import CartAddedList from '@/shopping-cart/cart-added-list'
 
 Vue.use(Router)
 
@@ -35,6 +38,23 @@ export default new Router({
       path: '/customer-data',
       name: 'CustomerData',
       component: CustomerData
+    },
+    {
+      path: '/shopping-cart',
+      name: 'ShoppingCart',
+      component: ShoppingCart,
+      children: [
+        {
+          path: ':id',
+          name: 'CartView',
+          component: CartView
+        }
+      ]
+    },
+    {
+      path: '/cart-added-list',
+      name: 'CartAddedList',
+      component: CartAddedList
     },
   ]
 })

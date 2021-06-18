@@ -9,6 +9,7 @@
             </b-form-group>
             <b-form-group label="Password:">
                 <b-form-input
+                type="password"
                 v-model="loginData.password"
                 placeholder="Password"
                 ></b-form-input>
@@ -33,7 +34,7 @@ export default {
     methods: {
         login(){
             if(this.loginData.user_name === "" || this.loginData.password === "") {
-                console.log("username or password fields should not ")
+                console.log("username or password fields should not be empty")
             }else{
                 console.log(JSON.stringify(this.loginData));
             }
