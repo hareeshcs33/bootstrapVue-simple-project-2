@@ -9,6 +9,8 @@ import CustomersList from '@/customer/customers-list'
 import ShoppingCart from '@/shopping-cart/shopping-cart'
 import CartView from '@/shopping-cart/cart-view'
 import CartAddedList from '@/shopping-cart/cart-added-list'
+import Todo from '@/todos/todo'
+import TodoCart from '@/todos/todo-cart'
 
 Vue.use(Router)
 
@@ -61,6 +63,16 @@ export default new Router({
       path: '/cart-added-list',
       name: 'CartAddedList',
       component: CartAddedList
+    },
+    {
+      path: '/todo',
+      name: 'Todo',
+      component: Todo
+    },
+    {
+      path: '/todo-cart',
+      name: 'TodoCart',
+      component: TodoCart
     },
   ]
 })
