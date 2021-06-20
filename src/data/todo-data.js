@@ -5,7 +5,8 @@ export const todoData = [
     isCart: false,
     quantity: 1,
     name: "Harry Potter",
-    city: "London"
+    city: "London",
+    isCheck: false,
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ export const todoData = [
     isCart: false,
     quantity: 1,
     name: "Don Quixote",
-    city: "Madrid"
+    city: "Madrid",
+    isCheck: false,
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ export const todoData = [
     isCart: false,
     quantity: 1,
     name: "Joan of Arc",
-    city: "Paris"
+    city: "Paris",
+    isCheck: false,
   },
   {
     id: 4,
@@ -29,6 +32,7 @@ export const todoData = [
     isCart: false,
     quantity: 1,
     name: "Rosa Park",
-    city: "Alabama"
+    city: "Alabama",
+    isCheck: false,
   }
 ];

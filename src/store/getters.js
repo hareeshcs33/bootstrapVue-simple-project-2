@@ -22,3 +22,10 @@ export const getTodoCartTotalPrice = state => {
       return (total += cartItem.price * cartItem.quantity);
     }, 0);
 };
+
+export const getTodoCartSelectedItemsTotalPrice = state => {
+    return state.todos.filter(item => item.isCheck === true)
+    .reduce((total, itemPrice) => {
+        return (total += itemPrice.price * itemPrice.quantity);
+    },0);
+}
