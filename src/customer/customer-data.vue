@@ -1,7 +1,8 @@
 <template>
   <b-container>
     <h3>Customer Data</h3>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <p>{{ currentUserId }}</p>
+    <b-form @submit.prevent="onSubmit" @reset.prevent="onReset" v-if="show">
       <b-card class="mb-3">
         <b-form-group
           id="input-group-1"
@@ -95,27 +96,32 @@
       </b-card>
 
       <b-card class="mb-3">
-        <b-form-group label="Individual radios" v-slot="{ ariaDescribedby }">
+        <b-form-group
+          label="Customer Option Type:"
+          v-slot="{ ariaDescribedby }"
+        >
           <b-form-radio
             v-model="form.typeSelected"
             :aria-describedby="ariaDescribedby"
             name="TypeVal"
             value="typeA"
-            >Type A</b-form-radio
           >
+            Type A
+          </b-form-radio>
           <b-form-radio
             v-model="form.typeSelected"
             :aria-describedby="ariaDescribedby"
             name="TypeVal"
             value="typeB"
-            >Type B</b-form-radio
           >
+            Type B
+          </b-form-radio>
         </b-form-group>
       </b-card>
       <b-card class="mb-3">
         <b-button type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
-        <b-button @click="cancelSubmit" variant="danger">Cancel</b-button>
+        <b-button @click.prevent="cancelSubmit" variant="danger">Cancel</b-button>
       </b-card>
     </b-form>
     <b-card class="my-3 mb-3" header="Form Data result">
@@ -126,56 +132,72 @@
 </template>
 <script>
 export default {
-  name: "CustomerData",
+  name: 'CustomerData',
   data() {
     return {
       form: {
-        email: "",
-        name: "",
-        food: "Babycorn",
+        email: '',
+        name: '',
+        food: 'Babycorn',
         checked: [],
-        gender: "Male",
+        gender: 'Male',
         phone_number: null,
         dob: null,
         comment: null,
         typeSelected: null,
+        id: 0,
       },
-      genders: ["Male", "Female", "Other"],
+      genders: ['Male', 'Female', 'Other'],
       foods: [
         {
-          text: "Select One",
-          value: "Null"
+          text: 'Select One',
+          value: 'Null',
         },
-        "Carrots",
-        "Beans",
-        "Tomatoes",
-        "Babycorn"
+        'Carrots',
+        'Beans',
+        'Tomatoes',
+        'Babycorn',
       ],
-      show: true
-    };
+      show: true,
+      currentUserId: null,
+    }
   },
   methods: {
-    onSubmit(event) {
-      event.preventDefault();
-      console.log(JSON.stringify(this.form));
-      this.$store.commit("customerData", this.form);
-      this.$router.push("/customers-list");
+    onSubmit() {
+      console.log(JSON.stringify(this.form))
+      this.$store.commit('customerData', { ...this.form, id: Date.now() })
+      this.$router.push('/customers-list')
     },
-    onReset(event) {
-      event.preventDefault();
-      this.form.email = "";
-      this.form.name = "";
-      this.form.food = null;
-      this.form.checked = [];
+    onReset() {
+      this.form.email = ''
+      this.form.name = ''
+      this.form.food = null
+      this.form.checked = []
+      this.form.gender = 'Male'
+      this.form.phone_number = null
+      this.form.dob = null
+      this.form.comment = null
+      this.form.typeSelected = null
     },
     cancelSubmit() {
-      this.$router.push("/customers-list");
-    }
+      this.onReset()
+      this.$router.push('/customers-list')
+    },
   },
   computed: {
     getCustomersData() {
-      return this.$store.getters.getCustomersData;
+      return this.$store.getters.getCustomersData
+    },
+  },
+  mounted() {
+    this.currentUserId = this.$route.params.id // read router params
+    console.log(' router param id', this.currentUserId)
+    if (this.currentUserId > 0) {
+      this.form = {
+        ...this.form,
+        ...this.$store.getters.getCurrentCustomer,
+      }
     }
-  }
-};
+  },
+}
 </script>

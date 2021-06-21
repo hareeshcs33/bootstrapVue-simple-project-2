@@ -39,7 +39,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/customer-data',
+      path: '/customer-data/:id',
       name: 'CustomerData',
       component: CustomerData
     },

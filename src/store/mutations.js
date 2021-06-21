@@ -43,10 +43,25 @@ export const ADD_TO_CART = (state, id) => {
 };
 
 export const REMOVE_FROM_CART = (state, id) => {
-  state.todos.find(item => {
+  const arr = state.todos.map(item => {
     if (item.id === id) {
       item.isCart = false;
       item.quantity = 1;
     }
+    return item;
   });
+  state = {
+      ...state,
+      todos : [...arr]
+  };
 };
+
+export const EDIT_ITEM = (state, id) => {
+    const item = state.customers.find(item => item.id === id);
+    console.log('Edit mutation', id, item);
+    state.currentCustomer = {...item};
+    // state = {
+    //     ...state,
+    //     currentCustomer: item
+    // };
+}

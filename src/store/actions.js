@@ -17,3 +17,4 @@ export const getProducts = ({ commit }) => {
 export const todoList = ({ commit }) => {
   commit("SET_TODOS", todoData);
 };
+

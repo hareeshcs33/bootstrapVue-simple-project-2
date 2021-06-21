@@ -29,3 +29,6 @@ export const getTodoCartSelectedItemsTotalPrice = state => {
         return (total += itemPrice.price * itemPrice.quantity);
     },0);
 }
+export const getCurrentCustomer = state => {
+    return state.currentCustomer;
+}
