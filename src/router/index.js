@@ -4,6 +4,7 @@ import Home from '@/components/home'
 import About from '@/components/about'
 import Contact from '@/components/contact'
 import Login from '@/customer/login'
+import Signup from '@/customer/signup'
 import CustomerData from '@/customer/customer-data'
 import CustomersList from '@/customer/customers-list'
 import ShoppingCart from '@/shopping-cart/shopping-cart'
@@ -37,6 +38,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup
     },
     {
       path: '/customer-data/:id',
