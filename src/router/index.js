@@ -13,6 +13,7 @@ import CartAddedList from '@/shopping-cart/cart-added-list'
 import Todo from '@/todos/todo'
 import TodoCart from '@/todos/todo-cart'
 import TodoCheckout from '@/todos/todo-checkout'
+import UserSignup from '@/users/user-signup'
 
 Vue.use(Router)
 
@@ -85,6 +86,11 @@ export default new Router({
       path: '/todo-checkout',
       name: 'TodoCheckout',
       component: TodoCheckout
+    },
+    {
+      path: '/user-signup',
+      name: 'UserSignup',
+      component: UserSignup
     },
   ]
 })
